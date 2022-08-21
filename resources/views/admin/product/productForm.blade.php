@@ -75,7 +75,7 @@ Add Products
           <div class="text-danger"> {{$message}} </div>
           @enderror
     
-          <input type="submit" value="submit" class="btn btn-primary block mt-3 mb-3">
+          <input type="submit" value="Add" class="btn btn-primary block mt-3 mb-3">
 
     </form>
     

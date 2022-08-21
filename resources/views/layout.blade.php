@@ -13,8 +13,9 @@
     <title>@yield('title')</title>
   </head>
   <body>
-    @yield('message')
+
     @include('inc.navbar')
+    @yield('message')
     @yield('carousel')
     @yield('inventory-list')
     @yield('inventory-form')

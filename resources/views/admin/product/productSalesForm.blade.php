@@ -4,11 +4,12 @@
 Sales Form
 @endsection
 @section('inventory-form')
+@if ($product->quantity >= 1)
 <h2 class="text-center" style="margin-top:100px;">Add Product To Sell List</h2>
 <div class="container mt-5" style="display: flex; justify-content: center;">
 
 
-    @if ($product->quantity >= 1)
+
 
     
     <form action="{{route('sales_store')}}" method="post"  enctype="multipart/form-data">
@@ -53,7 +54,7 @@ Sales Form
 
           <div class="mt-3">
             <label for="product" class="form-label">Quantity</label>
-            <input type="number"  class="form-control" id="qty" name="qty" min="1" max="{{$product->quantity}}">
+            <input type="number"  class="form-control" id="qty" name="quantity" min="1" max="{{$product->quantity}}">
           </div>
         @error('qty')
           <span class="text-danger"> {{$message}}     </span>
@@ -84,6 +85,10 @@ Sales Form
     </form>
         
     @else
+
+    <h1 class="text-center mt-5 text-danger">Product Out Of Stock</h1>
+
+
 
         
  

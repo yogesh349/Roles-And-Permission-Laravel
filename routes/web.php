@@ -27,9 +27,10 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/',[FrontedController::class,'index'])->name('home');
 
 // Inventory
-Route::get('/showInventory',[InventoryController::class,'index']);
+Route::get('/showInventory',[InventoryController::class,'index'])->name('inventoryList');
 Route::get('/showInventoryForm',[InventoryController::class,'create'])->name('inventory-form')->middleware(['can:isAdmin,App\Models\Product']);;
-Route::post('/insertInventoryForm',[InventoryController::class,'store'])->name('store_inventory')->middleware(['can:isAdmin,App\Models\Product']);;
+Route::post('/insertInventoryForm',[InventoryController::class,'store'])->name('store_inventory')->middleware(['can:isAdmin,App\Models\Product']);
+
 
 // Product Routes
 

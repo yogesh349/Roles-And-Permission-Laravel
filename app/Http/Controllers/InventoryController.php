@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Inventory;
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class InventoryController extends Controller
@@ -10,6 +11,9 @@ class InventoryController extends Controller
     //
 
     public function index(){
+        
+     
+        // return view('admin.inventoryList',['inventory'=>$inventory]);
         return view('admin.inventoryList');
     }
 

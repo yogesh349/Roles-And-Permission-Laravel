@@ -40,7 +40,8 @@ class ProductControler extends Controller
      */
     public function store(Request $request)
     {
-
+        $inventory=Inventory::find($request->input('inventory_id'));
+        dd($inventory->qtu);
         $validated = $request->validate([
             'inventory_id'=>'required',
             'product'=>'required',

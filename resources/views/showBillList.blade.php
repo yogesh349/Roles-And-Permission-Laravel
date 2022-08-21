@@ -33,13 +33,13 @@
                     <img src="{{asset('storage/productfile/'.$item->products->image)}}" alt="" width="100px">
                 </td>
                 <td>{{$item->products->rate}}</td>
-                <td>{{$item->products->quantity}}</td>
+                <td>{{$item->quantity}}</td>
                 <td>{{$item->discount}}</td>
                 <td>@php
               
-                  $price=$item->products->rate;
-                  $discount=$item->discount;
-                  $qty=$item->products->quantity;
+                  $price=(int)$item->products->rate;
+                  $discount=(int)$item->discount;
+                  $qty=(int)$item->quantity;
                   $discount_price=($discount*$price)/100;
                   $actual_price=$price-$discount_price;
                   $total_price= $actual_price*$qty;

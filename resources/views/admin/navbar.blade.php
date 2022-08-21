@@ -7,13 +7,16 @@
      <div class="p-2"><a class="text-decoration-none"  href="{{route('show_form_product')}}">Add Products</a></div>
      @endcan
 
-     @can('create', 'App\Models\Product')
-     <div class="p-2"><a class="text-decoration-none"  href="{{route('inventory-form')}}">Add Inventory</a></div>
-     @endcan
+     
      
 
-      @can('viewAny',  'App\Models\Product')
+      @can('isAdmin',  'App\Models\Product')
       <div class="p-2"> <a class="text-decoration-none" href="{{route('inventory-form')}}">Add Inventory</a></div>
+          
+      @endcan
+
+      @can('isAdmin',  'App\Models\Product')
+      <div class="p-2"> <a class="text-decoration-none" href="{{route('inventoryList')}}">Inventory</a></div>
           
       @endcan
      

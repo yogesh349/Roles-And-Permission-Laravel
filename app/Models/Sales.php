@@ -16,10 +16,11 @@ class Sales extends Model
         'discount',
         'prod_id',
         'user_id',
+        'quantity'
     ];
 
     
     public function products(){
-        return $this->belongsTo(Product::class,'id');
+        return $this->belongsTo(Product::class,'prod_id','id');
     }
 }

@@ -20,21 +20,39 @@ class SalesController extends Controller
             'desc'=>'required',
             'discount'=>'required',
             'prod_id'=>'required',
+            'quantity'=>'required',
             
         ]);
-        Sales::create(
-            [
 
-                'slug'=>$request->input('slug'),
-                'invoice_num'=>$request->input('in_number'),
-                'description'=>$request->input('desc'),
-                'discount'=>$request->input('discount'),
-                'prod_id'=>$request->input('prod_id'),
-                'user_id'=>Auth::id(),
+        $product=Product::where('id',$request->input('prod_id'))->first();
 
-            ]
-            );
-            return redirect(route('home'))->with('status','Your Product Has Been Added To Bill');
+        if($product->quantity >0){
+            Sales::create(
+                [
+                    'slug'=>$request->input('slug'),
+                    'invoice_num'=>$request->input('in_number'),
+                    'description'=>$request->input('desc'),
+                    'discount'=>$request->input('discount'),
+                    'prod_id'=>$request->input('prod_id'),
+                    'user_id'=>Auth::id(),
+                    'quantity'=>$request->input('quantity')
+                ]
+                );
+    
+                
+                 $qty=($product->quantity)-($request->input('quantity'));
+                 $product->update(['quantity'=>$qty]);
+                 return redirect(route('home'))->with('status','Your Product Has Been Added To Bill');
+
+        }else{
+            return redirect(route('home'))->with('status','Product Out Of Stock');
+
+        }
+        
+        
+
+
+         
     }
 
     public function showBillList(){
